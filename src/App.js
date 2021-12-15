@@ -3,25 +3,40 @@
 
 import Nav from "./Nav";
 import Cat from "./Category";
-import Pro from "./Product";
-import { Button, Row, Col } from "reactstrap";
+import Pro from "./Productlist";
+import { Row, Col } from "reactstrap";
 
 import React, { Component } from "react";
 
 export default class App extends Component {
   state = {
-    currentcategory: " current state on apps component",
+    currentcategory: "",
+    products: [],
+    carts: [],
   };
 
+  get_products = (seoUrl) => {
+    var url = seoUrl;
+    if (this.state.currentcategory !== "") {
+      url = url + "?categoryId=" + this.state.currentcategory.id;
+    }
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => this.setState({ products: data }));
+  };
   onclic = (prob) => {
     //alert("you clicked " + category.items);
     this.setState({
-      currentcategory: prob.categoryName,
+      currentcategory: prob,
     });
+    alert(this.state.currentcategory.categoryName);
+    this.get_products("http://localhost:3000/products");
   };
+
   render() {
     const brand = "First React Apps";
-    let CategoryHead = "Categors List";
+    let CategoryHead = "Categories";
     let ProductHead = "Products";
 
     return (
@@ -40,7 +55,11 @@ export default class App extends Component {
           </Col>
 
           <Col xs="8">
-            <Pro info={ProductHead} currentcat={this.state.currentcategory} />
+            <Pro
+              info={ProductHead}
+              products={this.state.products}
+              currentcat={this.state.currentcategory}
+            />
           </Col>
         </Row>
         <Row>
@@ -48,5 +67,8 @@ export default class App extends Component {
         </Row>
       </div>
     );
+  }
+  componentDidMount() {
+    this.get_products("http://localhost:3000/products");
   }
 }

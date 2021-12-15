@@ -14,8 +14,7 @@ class Category extends Component {
     super(props);
 
     this.state = {
-      itemcategory: [],
-      current: " Reactaps",
+      itemcategory: []
     };
   }
 
@@ -51,9 +50,9 @@ class Category extends Component {
             <BreadcrumbItem>
               <a href="{this}">Home</a>
             </BreadcrumbItem>
-
-            <BreadcrumbItem>{this.state.current}</BreadcrumbItem>
-            <BreadcrumbItem active>{this.props.currentcat}</BreadcrumbItem>
+            <BreadcrumbItem active>
+              {this.props.currentcat.categoryName}
+            </BreadcrumbItem>
           </Breadcrumb>
         </Row>
         <Row>
@@ -62,8 +61,9 @@ class Category extends Component {
         <ListGroup>
           {this.state.itemcategory.map((category, index) => (
             <ListGroupItem
+              active={this.props.currentcat.id === category.id ? true : false}
               onClick={() => this.props.click(category)}
-              onMouseOver={this.onmouseover}
+              // onMouseOver={this.onmouseover}
               className="justify-content-start"
               key={index}
             >

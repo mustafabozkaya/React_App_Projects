@@ -15,23 +15,23 @@ export default class App extends Component {
     carts: [],
   };
 
-  get_products = (seoUrl) => {
-    var url = seoUrl;
-    if (this.state.currentcategory !== "") {
-      url = url + "?categoryId=" + this.state.currentcategory.id;
+  get_products = (category) => {
+    var url = "http://localhost:3000/products";
+    if (category.seoUrl) {
+      url = url + "?categoryId=" + category.id;
     }
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => this.setState({ products: data }));
   };
-  onclic = (prob) => {
+  onclic = (category) => {
     //alert("you clicked " + category.items);
     this.setState({
-      currentcategory: prob,
+      currentcategory: category,
     });
-    alert(this.state.currentcategory.categoryName);
-    this.get_products("http://localhost:3000/products");
+    //alert(category.categoryName);
+    // this.get_products(category);
   };
 
   render() {

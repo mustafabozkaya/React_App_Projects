@@ -15,6 +15,23 @@ export default class App extends Component {
     carts: [],
   };
 
+  add_chart = (pro) => {
+    let ncarts = this.state.carts;
+    var is_order = ncarts.find((card) => card.product.id === pro.id);
+
+    if (is_order) {
+      is_order.quantity += 1;
+
+      console.log(is_order);
+    } else {
+      ncarts.push({ product: pro, quantity: 1 });
+    }
+
+    this.setState({ carts: ncarts });
+    console.log("carts_state ::");
+    ncarts.forEach((c) => console.log(c));
+    //alert(this.state.carts.length);
+  };
   get_products = (category) => {
     var url = "http://localhost:3000/products";
     if (category.seoUrl) {
@@ -31,7 +48,7 @@ export default class App extends Component {
       currentcategory: category,
     });
     //alert(category.categoryName);
-    // this.get_products(category);
+    this.get_products(category);
   };
 
   render() {
@@ -42,7 +59,7 @@ export default class App extends Component {
     return (
       <div>
         <Row>
-          <Nav brand={brand} />
+          <Nav brand={brand} cart={this.state.carts} />
         </Row>
 
         <Row>
@@ -59,6 +76,7 @@ export default class App extends Component {
               info={ProductHead}
               products={this.state.products}
               currentcat={this.state.currentcategory}
+              addchart={this.add_chart}
             />
           </Col>
         </Row>

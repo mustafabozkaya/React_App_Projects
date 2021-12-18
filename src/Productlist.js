@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { CardHeader, Row, Table } from "reactstrap";
+import { CardHeader, Row, Table, Button } from "reactstrap";
 export default class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
       itemproducts: [],
+      carts: [],
     };
   }
 
@@ -27,6 +28,7 @@ export default class Product extends Component {
               <th>quantityPerUnit</th>
               <th>unitPrice($)</th>
               <th>unitsInStock</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -38,6 +40,15 @@ export default class Product extends Component {
                 <td>{product.quantityPerUnit}</td>
                 <td>{product.unitPrice}</td>
                 <td>{product.unitsInStock}</td>
+                <td>
+                  <Button
+                    outline
+                    color="info"
+                    onClick={() => this.props.addchart(product)}
+                  >
+                    ADD
+                  </Button>
+                </td>
               </tr>
             ))}
           </tbody>

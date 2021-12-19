@@ -14,6 +14,7 @@ import {
   Button,
   Dropdown,
 } from "reactstrap";
+
 import CartList from "./CartList";
 
 export default class Navi extends Component {
@@ -22,9 +23,17 @@ export default class Navi extends Component {
 
     this.state = {
       brand: this.props.brand,
+      isOpen: false,
     };
+
+    this.toggle = this.toggle.bind(this);
   }
 
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  }
   changestate = () => {
     this.setState({ brand: "E-TRADİNG APP" });
   };
@@ -33,10 +42,14 @@ export default class Navi extends Component {
     return (
       <div>
         <Navbar color="warning" expand="md" fixed="false" light>
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
-          <NavbarToggler onClick={function noRefCheck() {}} />
-          <Collapse navbar>
-            <Nav className="me-auto" navbar>
+          <NavbarBrand href="/">E -Trading App</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse
+            className=" justify-content-end"
+            isOpen={this.state.isOpen}
+            navbar
+          >
+            <Nav className="ml-auto " navbar>
               <NavItem>
                 <NavLink href="/components/">Components</NavLink>
               </NavItem>
@@ -47,16 +60,6 @@ export default class Navi extends Component {
               </NavItem>
               <CartList carts={this.props.cart} />
             </Nav>
-            <NavbarText>
-              <Button color="warning">CARTS ({this.props.cart.length})</Button>
-            </NavbarText>
-            <Dropdown toggle={function noRefCheck() {}}>
-              <DropdownToggle color="warning" caret></DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem header>Header</DropdownItem>
-                <DropdownItem>Action</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
           </Collapse>
         </Navbar>
       </div>

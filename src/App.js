@@ -7,6 +7,7 @@ import Pro from "./Productlist";
 import { Row, Col } from "reactstrap";
 
 import React, { Component } from "react";
+import alertfy from "alertifyjs";
 
 export default class App extends Component {
   state = {
@@ -19,6 +20,7 @@ export default class App extends Component {
       (cartitem, index) => cartitem.product.id !== pro.id
     );
     this.setState({ carts: newcart });
+    alertfy.error(pro.productName + " removed from chart..", 2);
   };
   add_chart = (pro) => {
     let ncarts = this.state.carts;
@@ -35,7 +37,11 @@ export default class App extends Component {
     this.setState({ carts: ncarts });
     console.log("carts_state ::");
     ncarts.forEach((c) => console.log(c));
-    //alert(this.state.carts.length);
+
+    alertfy.success(pro.productName + " add to chart..", 2);
+    // alertfy.alert("ADD", "Alert Message!", function () {
+    //   alertfy.success(pro.productName + " add to chart..", 2);
+    // });
   };
   get_products = (category) => {
     var url = "http://localhost:3000/products";

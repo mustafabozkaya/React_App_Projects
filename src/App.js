@@ -4,10 +4,14 @@
 import Nav from "./Nav";
 import Cat from "./Category";
 import Pro from "./Productlist";
+import Error from "./Error";
+import CartList from "./Cartlist";
+import CartSummary from "./CartSummary";
 import { Row, Col } from "reactstrap";
 
 import React, { Component } from "react";
 import alertfy from "alertifyjs";
+import { Routes, Route, Link } from "react-router-dom";
 
 export default class App extends Component {
   state = {
@@ -87,12 +91,30 @@ export default class App extends Component {
           </Col>
 
           <Col xs="8">
-            <Pro
-              info={ProductHead}
-              products={this.state.products}
-              currentcat={this.state.currentcategory}
-              addchart={this.add_chart}
-            />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Pro
+                    info={ProductHead}
+                    products={this.state.products}
+                    currentcat={this.state.currentcategory}
+                    addchart={this.add_chart}
+                  />
+                }
+              />
+              <Route
+                path="/carts"
+                element={
+                  <CartList
+                    carts={this.state.carts}
+                    remove={this.remove_cart}
+                  />
+                }
+              />
+
+              <Route path="*" element={<Error />} />
+            </Routes>
           </Col>
         </Row>
         <Row>

@@ -15,7 +15,7 @@ import {
   Dropdown,
 } from "reactstrap";
 
-import CartList from "./CartList";
+import Cartsummary from "./CartSummary";
 
 export default class Navi extends Component {
   constructor(props) {
@@ -58,7 +58,7 @@ export default class Navi extends Component {
                   GitHub
                 </NavLink>
               </NavItem>
-              <CartList
+              <Cartsummary
                 carts={this.props.cart}
                 remove={this.props.removeCart}
               />

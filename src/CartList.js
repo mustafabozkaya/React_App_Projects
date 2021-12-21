@@ -1,58 +1,93 @@
 import React, { Component } from "react";
-import {
-  UncontrolledDropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Badge,
-  NavItem,
-} from "reactstrap";
+import { Button, Table } from "reactstrap";
 
-export default class CartList extends Component {
+class CartList extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {};
   }
 
-  empty_cart = () => {
+  render_cart() {
     return (
-      <UncontrolledDropdown inNavbar nav>
-        <DropdownToggle nav>Empity</DropdownToggle>
-      </UncontrolledDropdown>
+      <div className="container-md">
+        <Table hover responsive>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>categoryId</th>
+              <th>productName</th>
+              <th>quantityPerUnit</th>
+              <th>unitPrice($)</th>
+              <th>unitsInStock</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.carts.map((item, index) => (
+              <tr key={index}>
+                <th scope="row">{item.product.categoryId}</th>
+                <td>{item.product.productName}</td>
+                <td>{item.product.quantityPerUnit}</td>
+                <td>{item.product.unitPrice}</td>
+                <td>{item.product.unitsInStock}</td>
+                <td>
+                  <Button
+                    outline
+                    color="danger"
+                    onClick={() => this.props.remove(item.product)}
+                  >
+                    Remove
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     );
-  };
+  }
 
-  cart_review = () => {
-    return (
-      <UncontrolledDropdown inNavbar nav>
-        <DropdownToggle caret nav>
-          Your Carts ({this.props.carts.length})
-        </DropdownToggle>
-        <DropdownMenu>
-          {this.props.carts.map((item, index) => (
-            <DropdownItem key={index}>
-              <Badge
-                color="danger"
-                onClick={() => this.props.remove(item.product)}
-              >
-                {" X "}
-              </Badge>
-              {item.product.productName}
-              {"    "}
-              <Badge color="success"> {item.quantity} </Badge>
-            </DropdownItem>
-          ))}
-
-          <DropdownItem divider />
-          <DropdownItem>Reset</DropdownItem>
-        </DropdownMenu>
-      </UncontrolledDropdown>
-    );
-  };
   render() {
-    return this.props.carts.length !== 0
-      ? this.cart_review()
-      : this.empty_cart();
+    return (
+      <div className="container-md">
+        <Table hover responsive>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>categoryId</th>
+              <th>productName</th>
+              <th>quantityPerUnit</th>
+              <th>unitPrice($)</th>
+              <th>unitsInStock</th>
+              <th>Quantity</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.carts.map((item, index) => (
+              <tr key={index}>
+                <th scope="row">{index}</th>
+                <th>{item.product.categoryId}</th>
+                <td>{item.product.productName}</td>
+                <td>{item.product.quantityPerUnit}</td>
+                <td>{item.product.unitPrice}</td>
+                <td>{item.product.unitsInStock}</td>
+                <td>{item.quantity}</td>
+                <td>
+                  <Button
+                    outline
+                    color="danger"
+                    onClick={() => this.props.remove(item.product)}
+                  >
+                    Remove
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+    );
   }
 }
+
+export default CartList;

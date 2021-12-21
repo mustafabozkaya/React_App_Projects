@@ -29,12 +29,18 @@ export default class CartList extends Component {
         <DropdownToggle caret nav>
           Your Carts ({this.props.carts.length})
         </DropdownToggle>
-        <DropdownMenu end>
+        <DropdownMenu>
           {this.props.carts.map((item, index) => (
             <DropdownItem key={index}>
+              <Badge
+                color="danger"
+                onClick={() => this.props.remove(item.product)}
+              >
+                {" X "}
+              </Badge>
               {item.product.productName}
               {"    "}
-              <Badge color="danger"> {item.quantity}</Badge>
+              <Badge color="success"> {item.quantity} </Badge>
             </DropdownItem>
           ))}
 

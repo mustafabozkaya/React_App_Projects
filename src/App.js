@@ -14,7 +14,12 @@ export default class App extends Component {
     products: [],
     carts: [],
   };
-
+  remove_cart = (pro) => {
+    let newcart = this.state.carts.filter(
+      (cartitem, index) => cartitem.product.id !== pro.id
+    );
+    this.setState({ carts: newcart });
+  };
   add_chart = (pro) => {
     let ncarts = this.state.carts;
     var is_order = ncarts.find((card) => card.product.id === pro.id);
@@ -59,7 +64,11 @@ export default class App extends Component {
     return (
       <div>
         <Row>
-          <Nav brand={brand} cart={this.state.carts} />
+          <Nav
+            brand={brand}
+            cart={this.state.carts}
+            removeCart={this.remove_cart}
+          />
         </Row>
 
         <Row>

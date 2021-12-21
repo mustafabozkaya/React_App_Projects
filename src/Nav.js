@@ -40,8 +40,8 @@ export default class Navi extends Component {
 
   render() {
     return (
-      <div>
-        <Navbar color="warning" expand="md" fixed="false" light>
+      <div className="container">
+        <Navbar color="warning" expand="md" fixed="True" light>
           <NavbarBrand href="/">E -Trading App</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse
@@ -58,7 +58,10 @@ export default class Navi extends Component {
                   GitHub
                 </NavLink>
               </NavItem>
-              <CartList carts={this.props.cart} />
+              <CartList
+                carts={this.props.cart}
+                remove={this.props.removeCart}
+              />
             </Nav>
           </Collapse>
         </Navbar>

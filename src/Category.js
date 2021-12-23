@@ -14,7 +14,7 @@ class Category extends Component {
     super(props);
 
     this.state = {
-      itemcategory: []
+      itemcategory: [],
     };
   }
 
@@ -48,7 +48,7 @@ class Category extends Component {
         <Row>
           <Breadcrumb>
             <BreadcrumbItem>
-              <a href="{this}">Home</a>
+              <a href="/">Home</a>
             </BreadcrumbItem>
             <BreadcrumbItem active>
               {this.props.currentcat.categoryName}

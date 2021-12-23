@@ -16,7 +16,7 @@ import {
 } from "reactstrap";
 
 import Cartsummary from "./CartSummary";
-
+import { Link } from "react-router-dom";
 export default class Navi extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +51,30 @@ export default class Navi extends Component {
           >
             <Nav className="ml-auto " navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink>
+                  <Link to="formuser">Log in</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to="/formuser">Log in</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink to="/about">About</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  to="/faq"
+                  className={(isActive) =>
+                    "nav-link" + (!isActive ? " unselected" : "")
+                  }
+                >
+                  FAQs
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink strict to="/events/">
+                  Events
+                </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">

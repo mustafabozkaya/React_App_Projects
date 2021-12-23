@@ -8,6 +8,7 @@ import Error from "./Error";
 import CartList from "./Cartlist";
 import CartSummary from "./CartSummary";
 import { Row, Col } from "reactstrap";
+import  Formuser  from "./Form";
 
 import React, { Component } from "react";
 import alertfy from "alertifyjs";
@@ -114,6 +115,7 @@ export default class App extends Component {
               />
 
               <Route path="*" element={<Error />} />
+              <Route path="/formuser" element={<Formuser />} />
             </Routes>
           </Col>
         </Row>

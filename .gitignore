@@ -11,6 +11,9 @@
 # production
 /build
 
+#Api Folder
+/Json*
+
 # misc
 .DS_Store
 .env.local

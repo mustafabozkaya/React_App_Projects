@@ -5,10 +5,10 @@ import Nav from "./Nav";
 import Cat from "./Category";
 import Pro from "./Productlist";
 import Error from "./Error";
-import CartList from "./Cartlist";
+import CartList from "./CartList";
 import CartSummary from "./CartSummary";
 import { Row, Col } from "reactstrap";
-import  Formuser  from "./Form";
+import Formuser from "./Form";
 
 import React, { Component } from "react";
 import alertfy from "alertifyjs";
@@ -49,7 +49,7 @@ export default class App extends Component {
     // });
   };
   get_products = (category) => {
-    var url = "http://localhost:3000/products";
+    var url = "http://localhost:3005/products";
     if (category.seoUrl) {
       url = url + "?categoryId=" + category.id;
     }

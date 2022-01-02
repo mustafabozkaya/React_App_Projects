@@ -76,7 +76,7 @@ class Category extends Component {
   }
 
   componentDidMount() {
-    this.get_categories("http://localhost:3000/categories");
+    this.get_categories("http://localhost:3005/categories");
   }
 }
 

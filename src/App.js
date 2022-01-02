@@ -15,6 +15,7 @@ import alertfy from "alertifyjs";
 import { Routes, Route, Link } from "react-router-dom";
 
 export default class App extends Component {
+  baseUrl = "https://server-backend-api.herokuapp.com";
   state = {
     currentcategory: "",
     products: [],
@@ -49,7 +50,7 @@ export default class App extends Component {
     // });
   };
   get_products = (category) => {
-    var url = "http://localhost:3005/products";
+    var url = this.baseUrl + "/products";
     if (category.seoUrl) {
       url = url + "?categoryId=" + category.id;
     }
@@ -85,6 +86,7 @@ export default class App extends Component {
         <Row>
           <Col xs="4">
             <Cat
+              baseUrl={this.baseUrl}
               click={this.onclic}
               info={CategoryHead}
               currentcat={this.state.currentcategory}
@@ -126,6 +128,6 @@ export default class App extends Component {
     );
   }
   componentDidMount() {
-    this.get_products("http://localhost:3000/products");
+    this.get_products(this.baseUrl + "/products");
   }
 }

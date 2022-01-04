@@ -51,7 +51,7 @@ export default class Navi extends Component {
           >
             <Nav className="ml-auto " navbar>
               <NavItem>
-                <NavLink href="/">Home</NavLink>
+                <NavLink href="/homeproducts">Home</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink>

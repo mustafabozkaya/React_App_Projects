@@ -48,7 +48,7 @@ class Category extends Component {
         <Row>
           <Breadcrumb>
             <BreadcrumbItem>
-              <a href="/homeproducts">Home</a>
+              <a href="#/homeproducts">Home</a>
             </BreadcrumbItem>
             <BreadcrumbItem active>
               {this.props.currentcat.categoryName}

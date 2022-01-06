@@ -96,7 +96,7 @@ export default class App extends Component {
           <Col xs="8">
             <Routes>
               <Route
-                path="/"
+                path="/homeproducts"
                 element={
                   <Pro
                     info={ProductHead}
@@ -116,7 +116,7 @@ export default class App extends Component {
                 }
               />
 
-              <Route path="*" element={<Error />} />
+              <Route path="/err-404" element={<Error />} />
               <Route path="/formuser" element={<Formuser />} />
             </Routes>
           </Col>

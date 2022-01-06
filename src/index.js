@@ -5,14 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "alertifyjs/build/css/alertify.css";
-import { BrowserRouter as Router } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  HashRouter as Hrouter,
+} from "react-router-dom";
 
 ReactDOM.render(
-  <Router>
+  <Hrouter>
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </Router>,
+  </Hrouter>,
   document.getElementById("root")
 );
 

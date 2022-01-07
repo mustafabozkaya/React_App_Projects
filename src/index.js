@@ -1,21 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import App from "./component/Home/App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "alertifyjs/build/css/alertify.css";
-import {
-  BrowserRouter as Router,
-  HashRouter as Hrouter,
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
-  <Hrouter>
+  <Router>
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </Hrouter>,
+  </Router>,
   document.getElementById("root")
 );
 

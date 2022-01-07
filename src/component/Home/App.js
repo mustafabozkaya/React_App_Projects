@@ -1,18 +1,17 @@
 //import logo from './logo.svg';
 //import './App.css';
 
-import Nav from "./Nav";
-import Cat from "./Category";
-import Pro from "./Productlist";
-import Error from "./Error";
-import CartList from "./CartList";
-import CartSummary from "./CartSummary";
-import { Row, Col } from "reactstrap";
-import Formuser from "./Form";
+import Nav from "../../Nav";
+import Error from "../../Error";
+import CartList from "../Cartlist/CartList";
+import CartSummary from "../../CartSummary";
+import { Row, Col, Container } from "reactstrap";
+import Formuser from "../../Form";
 
 import React, { Component } from "react";
 import alertfy from "alertifyjs";
 import { Routes, Route, Link } from "react-router-dom";
+import Dashboard from "./Dashboard";
 
 export default class App extends Component {
   baseUrl = "https://server-backend-api.herokuapp.com";
@@ -74,7 +73,7 @@ export default class App extends Component {
     let ProductHead = "Products";
 
     return (
-      <div>
+      <Container md="11">
         <Row>
           <Nav
             brand={brand}
@@ -84,47 +83,21 @@ export default class App extends Component {
         </Row>
 
         <Row>
-          <Col xs="4">
-            <Cat
+          <Col md="12">
+            <Dashboard
               baseUrl={this.baseUrl}
               click={this.onclic}
-              info={CategoryHead}
+              info={{ cat: CategoryHead, pro: ProductHead }}
               currentcat={this.state.currentcategory}
+              products={this.state.products}
+              addchart={this.add_chart}
             />
-          </Col>
-
-          <Col xs="8">
-            <Routes>
-              <Route
-                path="/homeproducts"
-                element={
-                  <Pro
-                    info={ProductHead}
-                    products={this.state.products}
-                    currentcat={this.state.currentcategory}
-                    addchart={this.add_chart}
-                  />
-                }
-              />
-              <Route
-                path="/carts"
-                element={
-                  <CartList
-                    carts={this.state.carts}
-                    remove={this.remove_cart}
-                  />
-                }
-              />
-
-              <Route path="/err-404" element={<Error />} />
-              <Route path="/formuser" element={<Formuser />} />
-            </Routes>
           </Col>
         </Row>
         <Row>
           <Col xs={{ span: 4, offset: 3 }}></Col>
         </Row>
-      </div>
+      </Container>
     );
   }
   componentDidMount() {

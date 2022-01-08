@@ -15,7 +15,7 @@ import {
   Dropdown,
 } from "reactstrap";
 
-import Cartsummary from "./CartSummary";
+import Cartsummary from "../Cartlist/CartSummary";
 import { Link } from "react-router-dom";
 export default class Navi extends Component {
   constructor(props) {
@@ -78,7 +78,7 @@ export default class Navi extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
+                <NavLink href="https://github.com/mustafabozkaya/React_App_projects">
                   GitHub
                 </NavLink>
               </NavItem>

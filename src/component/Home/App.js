@@ -1,10 +1,10 @@
 //import logo from './logo.svg';
 //import './App.css';
 
-import Nav from "../../Nav";
+import Nav from "../Navbar/Nav";
 import Error from "../../Error";
 import CartList from "../Cartlist/CartList";
-import CartSummary from "../../CartSummary";
+import CartSummary from "../Cartlist/CartSummary";
 import { Row, Col, Container } from "reactstrap";
 import Formuser from "../../Form";
 
